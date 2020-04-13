@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-FruteriaApplication<fruteria>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "ual.dra.fruteria.FruteriaApplication",
+            "projectName": "fruteria",
+            "args": ""
+        }
+    ]
+}
