@@ -1,8 +1,5 @@
+<div class="centrar">
 <h1>REGISTRO</h1>
-
-<button routerLink="">Ir a principal</button>
-<button routerLink="/login">Aceptar</button>
-
 <div class="col-md-12">
   <div class="card card-container">
     <img
@@ -117,5 +114,7 @@
     <div class="alert alert-success" *ngIf="isSuccessful">
       Your registration is successful!
     </div>
+    <div *ngIf="isSuccessful" routerLink="">Principal</div>
   </div>
+</div>
 </div>

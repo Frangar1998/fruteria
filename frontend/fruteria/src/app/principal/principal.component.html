@@ -1,33 +1,34 @@
+<div class="fondo">
 <div id="app">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">Fruteria</a>
+  <nav class="navbar navbar-expand navbar-dark navegacion">
+    <a class="titulo">Path of the Fruits</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item" *ngIf="!showAdminBoard && !showModeratorBoard">
-        <a class="nav-link" routerLink="" (click)="mostrarContenido(true, false, false, false)">Principal </a>
+        <a class="navegacion-item" routerLink="" (click)="mostrarContenido(true, false, false, false, false, false)">Principal </a>
       </li>
       <li class="nav-item" *ngIf="showAdminBoard">
-        <a class="nav-link" routerLink="" (click)="mostrarContenido(true, false, false, false)">Users </a>
+        <a class="navegacion-item" routerLink="" (click)="mostrarContenido(true, false, false, false, false, false)">Users </a>
       </li>
       <li class="nav-item" *ngIf="showModeratorBoard">
-        <a class="nav-link" routerLink="" (click)="mostrarContenido(true, false, false, false)">Moderador </a>
+        <a class="navegacion-item" routerLink="" (click)="mostrarContenido(true, false, false, false, false, false)">Moderador </a>
       </li>
       <li class="nav-item" *ngIf="isLoggedIn && !showModeratorBoard">
-        <a class="nav-link" (click)="mostrarContenido(false, true, false, false)">Products</a>
+        <a class="navegacion-item" (click)="mostrarContenido(false, true, false, false, false, false)">Products</a>
       </li>
       <li class="nav-item" *ngIf="isLoggedIn && !showAdminBoard && !showModeratorBoard">
-        <a class="nav-link" (click)="mostrarContenido(false, false, true, false)">My Orders</a>
+        <a class="navegacion-item" (click)="mostrarContenido(false, false, true, false, false, false)">My Orders</a>
       </li>
       <li class="nav-item" *ngIf="isLoggedIn && !showAdminBoard && !showModeratorBoard">
-        <a class="nav-link" (click)="mostrarContenido(false, false, false, true)">New Order</a>
+        <a class="navegacion-item" (click)="mostrarContenido(false, false, false, true, false, false)">New Order</a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
       <li class="nav-item">
-        <a class="nav-link" routerLink="registro">Sign Up</a>
+        <a class="navegacion-item" (click)="mostrarContenido(false, false, false, false, false, true)">Sign Up</a>
       </li>
       <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
+        <a class="navegacion-item" (click)="mostrarContenido(false, false, false, false, true, false)">Login</a>
       </li>
     </ul>
 
@@ -70,15 +71,27 @@
   </header>
 </div>
 
+<div class="contenedor-login" *ngIf="!isLoggedIn && showLogin">
+  <header class="jumbotron">
+    <app-login></app-login>
+  </header>
+</div>
+
+<div class="container" *ngIf="!isLoggedIn && showRegistro">
+  <header class="jumbotron">
+    <app-registro></app-registro>
+  </header>
+</div>
+
 <div class="container" *ngIf="isLoggedIn && showNuevoPedido">
   <header class="jumbotron">
     <app-nuevo-pedido></app-nuevo-pedido>
   </header>
 </div>
 
-<div class="container" *ngIf="!isLoggedIn">
+<div class="container" *ngIf="!isLoggedIn && !showLogin && !showRegistro">
   <header class="jumbotron">
     <app-productos></app-productos>
   </header>
 </div>
-
+</div>

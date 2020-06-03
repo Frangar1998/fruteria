@@ -1,0 +1,36 @@
+.fondo {
+  position: absolute;
+  top:0;
+  bottom:0;
+  left: 0;
+  right: 0;
+  background-image: url("../../assets/fondoPrincipalMenosOpacidad.jpg");
+}
+
+.navegacion {
+  background-color: #fd9d53 !important;
+}
+
+.titulo {
+  font-size: 1.5vw;
+  color: white;
+}
+
+.navegacion-item {
+ margin-left: 1vw;
+ font-weight: 400;
+ color:rgb(221, 221, 221);
+}
+
+.contenedor-login {
+  text-align: center !important;
+  background-color: lightblue;
+  border-radius: 5px;
+  margin-left: 14%;
+  margin-right: 14%;
+}
+
+.container {
+  margin-left: 14% !important;
+  margin-right: 14% !important;
+}

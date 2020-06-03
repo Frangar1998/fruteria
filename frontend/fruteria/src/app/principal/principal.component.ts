@@ -20,6 +20,8 @@ export class PrincipalComponent implements OnInit {
   showPrincipal = true;
   showPedidos = false;
   showNuevoPedido = false;
+  showLogin = false;
+  showRegistro = false;
 
   constructor(private userService: UserService, private tokenStorageService: TokenStorageService) { }
 
@@ -46,11 +48,13 @@ export class PrincipalComponent implements OnInit {
     }
   }
 
-  mostrarContenido(principal, productos, pedidos, nuevoPedido){
+  mostrarContenido(principal, productos, pedidos, nuevoPedido, login, registro){
     this.showPrincipal = principal;
     this.showProductos = productos;
     this.showPedidos = pedidos;
     this.showNuevoPedido = nuevoPedido;
+    this.showLogin = login;
+    this.showRegistro = registro;
   }
 
   logout() {

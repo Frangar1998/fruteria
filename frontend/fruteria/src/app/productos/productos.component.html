@@ -1,11 +1,13 @@
-<h1>PRODUCTOS</h1>
+<h1>PRODUCTS</h1>
 <div *ngIf="isAdmin">
   <div>New product</div>
 </div>
-<div *ngFor="let product of productos">
-  <div>
-    <p>{{product.name}}</p>
-    <img src="../../assets/{{product.name}}.jpg">
+<div class="products-container">
+<div class="product" *ngFor="let product of productos">
+  <div [ngStyle]="{background: 'url(../../assets/'+product.name+'.jpg','background-size':'cover','background-repeat':'no-repeat', 'background-position':'center'}">
+    <div>{{product.name}} {{product.price}}€</div>
+    <div class="precio">{{product.averageWeight}}g</div>
 
   </div>
+</div>
 </div>

@@ -1,7 +1,5 @@
+<div class="centrar">
 <h1>LOGIN</h1>
-
-<button routerLink="">Volver</button>
-<button routerLink="/registro">Registro</button>
 
 <div class="col-md-12">
   <div class="card card-container">
@@ -73,8 +71,10 @@
       </div>
     </form>
 
-    <div class="alert alert-success" *ngIf="isLoggedIn">
-      Logged in as {{ roles }}.
+    <div class="alert alert-success" *ngIf="isLoggedIn" >
+      Logged in.
     </div>
+    <div *ngIf="isLoggedIn" routerLink="">Principal</div>
   </div>
+</div>
 </div>

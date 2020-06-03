@@ -15,15 +15,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', component: PrincipalComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'registro', component: RegistroComponent },
-  { path: 'pedidos', component: PedidosComponent },
-  { path: 'detalles-pedido', component: DetallesPedidoComponent },
-  { path: 'nuevo-pedido', component: NuevoPedidoComponent },
-  { path: 'productos', component: ProductosComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'mod', component: ModComponent },
-  { path: 'user-profile', component: UserProfileComponent },
 ];
 
 @NgModule({

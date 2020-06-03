@@ -1,0 +1,32 @@
+.products-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: space-around !important;
+  align-items: center;
+  grid-gap: 1vw;
+}
+
+.product {
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr;
+  height: 10vw;
+  width: 10vw;
+  box-shadow: 2px 2px 2px 2px grey;
+  margin-left: 3vw;
+  margin-bottom: 1vw;
+  margin-top: 1vw;
+  text-align: center !important;
+  text-shadow:black 1px 1px 3px, black -1px -1px 3px;
+  color: #FFFFFF;
+  border-radius: 8px;
+  border-style: solid;
+  font-weight: bold;
+}
+
+.precio {
+  position: absolute;
+  bottom: 2px !important;
+  font-size: 1.2vw;
+  font-weight: bold;
+}
