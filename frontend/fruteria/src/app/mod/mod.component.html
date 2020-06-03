@@ -1,0 +1,31 @@
+<div>
+  <h2>ORDERS</h2>
+  <div>
+    <div *ngFor="let pedido of pedidos">
+      <div *ngIf="!pedido.state">
+        <div (click)="donePedido(pedido.id)">
+          DONE
+        </div>
+        <div>
+          Order date: {{textualdate(pedido.orderDate)}}
+        </div>
+        <div>
+          Delivery date: {{textualdate(pedido.deliveryDate)}}
+        </div>
+        <div>
+          Payment: {{pedido.payment}}€
+        </div>
+        <div>
+          Number of products: {{pedido.numberOfProducts}}
+        </div>
+        <div>
+          <app-detalles-pedido [productos]="pedido.products"></app-detalles-pedido>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>

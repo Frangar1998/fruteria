@@ -1,0 +1,35 @@
+<h1>ORDERS</h1>
+
+<div *ngFor="let pedido of pedidos">
+  <div>
+    <div *ngIf="pedido.state; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <div>
+        State: DONE
+      </div>
+    </ng-template>
+    <ng-template #elseBlock>
+      <div>
+        State: IN PROGRESS
+      </div>
+    </ng-template>
+    <div>
+      Order date: {{textualdate(pedido.orderDate)}}
+    </div>
+    <div>
+      Delivery date: {{textualdate(pedido.deliveryDate)}}
+    </div>
+    <div>
+      Payment: {{pedido.payment}}€
+    </div>
+    <div>
+      Number of products: {{pedido.numberOfProducts}}
+    </div>
+    <div>
+      <app-detalles-pedido [productos]="pedido.products"></app-detalles-pedido>
+    </div>
+  </div>
+
+</div>
+
+

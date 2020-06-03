@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Product {
@@ -17,10 +15,7 @@ public class Product {
     private String name;
     private double averageWeight;
     private double price;
-
-    @ManyToOne
-    @JoinColumn
-    private Order order;
+    private String image;
 
     public Product(){
 
@@ -56,6 +51,14 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 }

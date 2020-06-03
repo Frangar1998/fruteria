@@ -1,0 +1,84 @@
+<div id="app">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Fruteria</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item" *ngIf="!showAdminBoard && !showModeratorBoard">
+        <a class="nav-link" routerLink="" (click)="mostrarContenido(true, false, false, false)">Principal </a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a class="nav-link" routerLink="" (click)="mostrarContenido(true, false, false, false)">Users </a>
+      </li>
+      <li class="nav-item" *ngIf="showModeratorBoard">
+        <a class="nav-link" routerLink="" (click)="mostrarContenido(true, false, false, false)">Moderador </a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn && !showModeratorBoard">
+        <a class="nav-link" (click)="mostrarContenido(false, true, false, false)">Products</a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn && !showAdminBoard && !showModeratorBoard">
+        <a class="nav-link" (click)="mostrarContenido(false, false, true, false)">My Orders</a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn && !showAdminBoard && !showModeratorBoard">
+        <a class="nav-link" (click)="mostrarContenido(false, false, false, true)">New Order</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="registro">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+
+<div class="container" *ngIf="isLoggedIn && showProductos && !showModeratorBoard">
+  <header class="jumbotron">
+    <app-productos [isAdmin]="showAdminBoard"></app-productos>
+  </header>
+</div>
+
+<div class="container" *ngIf="isLoggedIn && showPrincipal && !showAdminBoard && !showModeratorBoard">
+  <header class="jumbotron">
+    <app-user-profile></app-user-profile>
+  </header>
+</div>
+
+<div class="container" *ngIf="isLoggedIn && showPrincipal && showAdminBoard && !showModeratorBoard">
+  <header class="jumbotron">
+    <app-admin></app-admin>
+  </header>
+</div>
+
+<div class="container" *ngIf="isLoggedIn && showPrincipal && !showAdminBoard && showModeratorBoard">
+  <header class="jumbotron">
+    <app-mod></app-mod>
+  </header>
+</div>
+
+<div class="container" *ngIf="isLoggedIn && showPedidos">
+  <header class="jumbotron">
+    <app-pedidos></app-pedidos>
+  </header>
+</div>
+
+<div class="container" *ngIf="isLoggedIn && showNuevoPedido">
+  <header class="jumbotron">
+    <app-nuevo-pedido></app-nuevo-pedido>
+  </header>
+</div>
+
+<div class="container" *ngIf="!isLoggedIn">
+  <header class="jumbotron">
+    <app-productos></app-productos>
+  </header>
+</div>
+

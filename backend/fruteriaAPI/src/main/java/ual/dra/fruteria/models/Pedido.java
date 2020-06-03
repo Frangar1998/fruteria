@@ -1,19 +1,23 @@
 package ual.dra.fruteria.models;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-public class Order {
+@Table(name = "pedido")
+public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,15 +26,19 @@ public class Order {
     private double payment;
     private Date orderDate;
     private Date deliveryDate;
+    private int numberOfProducts;
+    private boolean state;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private Set<Product> products;
+    @ManyToMany
+    @JoinColumn
+    private Set<Product> products = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn
-    private Customer customer;
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
+    private User user;
 
-    public Order(){
+    public Pedido(){
 
     }
 
@@ -73,5 +81,31 @@ public class Order {
     public void setProducts(Set<Product> products) {
         this.products = products;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public int getNumberOfProducts() {
+        return numberOfProducts;
+    }
+
+    public void setNumberOfProducts(int numberOfProducts) {
+        this.numberOfProducts = numberOfProducts;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
+    
     
 }

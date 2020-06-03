@@ -2,16 +2,14 @@ version: '3.1'
 
 services:
 
-  db:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
+  fruteriaDB:
+    image: postgres:latest
     environment:
-      MYSQL_ROOT_PASSWORD: pass123
-      MYSQL_DATABASE: fruteria
-      MYSQL_USER: fran
-      MYSQL_PASSWORD: pass123
+      POSTGRES_DB: fruteria
+      POSTGRES_USER: fran
+      POSTGRES_PASSWORD: pass123
     ports:
-        - 3306:3306
+        - 5432:5432
 
   adminer:
     image: adminer

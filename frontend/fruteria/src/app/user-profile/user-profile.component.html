@@ -1,0 +1,42 @@
+<div>
+  <p>{{usuario.username}}</p>
+</div>
+
+<div>
+  <p>{{usuario.email}}</p>
+</div>
+
+<div>
+  <p>{{usuario.telefono}}</p>
+</div>
+
+<div>
+  <p>{{usuario.direccion}}</p>
+</div>
+
+<div>
+  <div *ngFor="let pedido of usuario.pedidos">
+    <div *ngIf="!pedido.state">
+    <div *ngIf="pedido.state; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <div>
+        State: DONE
+      </div>
+    </ng-template>
+    <ng-template #elseBlock>
+      <div>
+        State: IN PROGRESS
+      </div>
+    </ng-template>
+    <p>Payment: {{pedido.payment}}€</p>
+    <p>Order date: {{textualdate(pedido.orderDate)}}</p>
+    <p>Delivery date: {{textualdate(pedido.deliveryDate)}}</p>
+    <p>Number of products: {{pedido.numberOfProducts}}</p>
+  </div>
+</div>
+</div>
+
+
+
+
+

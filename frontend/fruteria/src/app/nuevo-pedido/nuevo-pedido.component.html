@@ -1,0 +1,96 @@
+<div>
+  <h1>NUEVO PEDIDO</h1>
+
+  <form
+  *ngIf="!isSuccessful"
+  name="form"
+  (ngSubmit)="f.form.valid && onSubmit()"
+  #f="ngForm"
+  novalidate
+>
+
+  <div class="form-group">
+    <label for="deliveryDate">Delivery date</label>
+    <input
+      type="date"
+      class="form-control"
+      name="deliveryDate"
+      [(ngModel)]="form.deliveryDate"
+      required
+      #deliveryDate="ngModel"
+    />
+    <div class="alert-danger" *ngIf="f.submitted && deliveryDate.invalid">
+      <div *ngIf="deliveryDate.errors.required">Delivery date is required</div>
+      <div *ngIf="deliveryDate.errors.minlength">
+        Delivery date must be at least 3 characters
+      </div>
+      <div *ngIf="deliveryDate.errors.maxlength">
+        Delivery date must be at most 20 characters
+      </div>
+    </div>
+  </div>
+
+    <div>
+      Productos disponibles:
+      <div *ngFor="let producto of productos;index as i">
+        <div (click)="addProducto(producto,i)">
+          {{producto.name}} - {{producto.averageWeight}}g - {{producto.price}}€
+        </div>
+      </div>
+    </div>
+
+    <div>
+      Productos seleccionados:
+      <div *ngFor="let producto of productosEnPedido;index as i">
+        <div *ngIf="producto != undefined">
+          {{producto}} x{{cantidadProductos[i]}} - {{precioProductos[i]}}€
+          <div (click)="removeProducto(producto,i)">
+            -
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      Precio total: {{precioTotal}}€
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Done</button>
+    </div>
+
+    <div class="alert alert-warning" *ngIf="f.submitted && postFailed">
+      Order failed!<br />{{ errorMessage }}
+    </div>
+  </form>
+
+
+  <div *ngIf="isSuccessful">
+    <div>
+      Order date: {{textualdate(form.orderDate)}}
+    </div>
+    <div>
+      Delivery date: {{textualdate(form.deliveryDate)}}
+    </div>
+    <div>
+      Payment: {{form.payment}}
+    </div>
+    <div>
+      Number of products: {{form.numberOfProducts}}
+    </div>
+    <div>
+      Products:
+    <div *ngFor="let product of productosEnPedido">
+      <div>
+        - {{product}}
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="alert alert-success" *ngIf="isSuccessful">
+    Order created succesfully
+  </div>
+</div>
+
+
+
